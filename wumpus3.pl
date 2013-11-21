@@ -20,7 +20,7 @@ run_agent(Pe,Ac):-
 	
 agente003([_,_,yes,_,_],grab). %pega o ouro%
 
-agente003([_,yes,_,_,_],P):-
+agente003([_,yes,_,_,_],P):- %se houver brisa na casa (1,1) ele sai
     sair([P|T]),
     retractall(sair(_)),
     assert(sair(T)).
@@ -41,8 +41,8 @@ agente003([_,_,_,yes,_],turnleft):- %quando bate a 3 vez vira a esquerda%
 agente003([_,_,_,yes,_],climb):- %quando bate a 4 vez sai do mapa%
     viradas(3).
 
-somar(X):-
-	retractall(viradas(_)),
+somar(X):-						%função para somar o numero de viradas%	
+	retractall(viradas(_)), 
 	Y is X+1,
 	assert(viradas(Y)).	
 
