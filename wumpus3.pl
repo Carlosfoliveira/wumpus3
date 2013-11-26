@@ -39,23 +39,49 @@ agente003([_,yes,_,_,_],P):- %se houver brisa na casa (1,1) ele sai
     assert(sair(T)).
 %   assert(sair([turnleft,goforward])).
 
-agente003([_,_,_,yes,_],Ac):- %quando bate a 1 vez vira a esquerda%
+agente003([_,_,_,yes,_],turnleft):- %quando bate a 1 vez vira a esquerda%
+	gold(0),
 	viradas(0),
-	gold(0) -> somarviradas(0),
-	gold(0) -> esquerda(Ac); climb(Ac).
-	%gold(0) -> dobraresquerda(Ac); dobrardireita2(Ac).   
+	somarviradas(0).   
 
-agente003([_,_,_,yes,_],Ac):- %quando bate a 2 vez vira a esquerda%
-    viradas(1),
-    gold(0) -> somarviradas(1); diminuirviradas(1),
-	gold(0) -> esquerda(Ac); direita(Ac).
+agente003([_,_,_,yes,_],turnleft):- %quando bate a 2 vez vira a esquerda%
+    gold(0),
+	viradas(1),
+    somarviradas(1).
+	
 
 agente003([_,_,_,yes,_],turnleft):- %quando bate a 3 vez vira a esquerda%
-    viradas(2),
+    gold(0),
+	viradas(2),
     somarviradas(2).
 
 agente003([_,_,_,yes,_],climb):- %quando bate a 4 vez sai do mapa%
-    viradas(3).
+    gold(0),
+	viradas(3).
+
+agente003([_,_,_,yes,_],turnright):- %quando bate a 3 vez vira a esquerda%
+    gold(3),
+    viradas(3),
+    diminuirviradas(3).
+
+agente003([_,_,_,yes,_],turnright):- %quando bate a 3 vez vira a esquerda%
+    gold(3),
+    viradas(2),
+    diminuirviradas(2).
+
+agente003([_,_,_,yes,_],turnright):- %quando bate a 3 vez vira a esquerda%
+    gold(3),
+    viradas(1),
+    diminuirviradas(1).
+
+agente003([_,_,_,yes,_],climb):- %quando bate a 3 vez vira a esquerda%
+    gold(3),
+    viradas(0).
+
+
+
+
+
 
 agente003([yes,_,_,_,no],P):- %quando sentir fedor atira%
 	atira([P|T]),
