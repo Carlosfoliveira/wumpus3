@@ -41,17 +41,21 @@ agente003([_,_,_,yes,_],turnleft):- %quando bate a 3 vez vira a esquerda%
 agente003([_,_,_,yes,_],climb):- %quando bate a 4 vez sai do mapa%
     viradas(3).
 
-somar(X):-						%função para somar o numero de viradas%	
-	retractall(viradas(_)), 
-	Y is X+1,
-	assert(viradas(Y)).	
-
 agente003([yes,_,_,_,no],P):- %quando sentir fedor atira%
 	atira([P|T]),
 	retractall(atira(_)),
 	assert(atira(T)).
 
 agente003([_,_,no,_,no],goforward). %anda para frente%
+
+somar(X):-                      %funcao para somar o numero de viradas%
+    retractall(viradas(_)),
+    Y is X+1,
+    assert(viradas(Y)).
+
+%gold(1)-> dobrardireita(ac); dobraresquerda(Ac).
+%dobrardireita(turnright).
+%dobraresquerda(turnleft).
 
 %Fedor,Vento,Brilho,Trombada,Grito]
 % Acoes possiveis:
