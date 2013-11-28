@@ -146,11 +146,4 @@ esquerda(turnleft).
 climb(climb).
 
 %Fedor,Vento,Brilho,Trombada,Grito]
-% Acoes possiveis:
-% goforward - andar
-% turnright - girar sentido horario
-% turnleft - girar sentido anti-horario
-% grab - pegar o ouro
-% climb - sair da caverna
-% shoot - atirar a flecha
-                                                           
+                                      
