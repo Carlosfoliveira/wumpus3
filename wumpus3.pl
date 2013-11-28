@@ -140,7 +140,7 @@ zerarcasa(X):-
 	assert(casa(Y)).
 
 
-%gold(1)-> dobrardireita(ac); dobraresquerda(Ac).
+
 direita(turnright).
 esquerda(turnleft).
 climb(climb).
