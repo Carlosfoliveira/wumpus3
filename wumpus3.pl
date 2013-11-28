@@ -140,7 +140,6 @@ zerarcasa(X):-
 	assert(casa(Y)).
 
 
-
 direita(turnright).
 esquerda(turnleft).
 climb(climb).
