@@ -16,7 +16,7 @@ init_agent :-
 	assert(viradas(0)), %Conta o numero de vezes o Agente virou para sair quando bater a 4 vez ou para dar Backtracking
 	assert(gold(0)), %Saber se ja pegou o ouro para comecar o Backtracking
 	assert(pegar([grab,turnleft,turnleft])), %Quando pegar o ouro dar uma volta de 180 graus
-	assert(viraatira([turnleft,shoot,goforward,goforward,goforward])), %Quando estiver na quina do mapa e sentir uma brisa ele vira antes de atirar
+	assert(viraatira([goforward,turnleft,shoot,goforward,goforward,goforward])), %Quando estiver na quina do mapa e sentir uma brisa ele vira antes de atirar
 	assert(casa(0)). %Contar em que casa esta para saber se esta na quina ou nao
 
 restart_agent :-
@@ -36,6 +36,7 @@ agente003([_,_,_,_,_],turnleft):- %Começando a dar o giro de 180 graus depois d
 agente003([_,_,_,_,_],turnleft):- %Termino de giro de 180 grays depois de pegar o ouro
     gold(2),
     somarouro(2).
+
 
 agente003([_,yes,_,_,_],P):- %se houver brisa na casa (1,1) ele da climb
 	casa(0),
@@ -107,7 +108,7 @@ agente003([yes,_,_,_,no],P):- %quando sentir fedor na casa 2 atira para frente e
 
 agente003([yes,_,_,_,no],P):- %quando sentir fedor na casa 3, ou seja, em uma quina ele vira para esquerda e depois atira
 	casa(3),
-    viraatira([P|T]),
+	viraatira([P|T]),
     retractall(viraatira(_)),
     assert(viraatira(T)).
 
