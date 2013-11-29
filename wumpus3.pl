@@ -1,6 +1,6 @@
 :- load_files([wumpus1]).
 
-:-dynamic([sair/1,atira/1,viradas/1,gold/1,pegar/1,casa/1,viraatira/1]).
+:-dynamic([sair/1,atira/1,viradas/1,gold/1,pegar/1,casa/1,]). %Declarando variaveis dinamicas
 
 init_agent :- 
     writeln('Agente iniciando...'), 
@@ -9,14 +9,12 @@ init_agent :-
 	retractall(viradas(_)),
 	retractall(gold(_)),
 	retractall(pegar(_)),
-	retractall(viraatira(_)),
 	retractall(casa(_)),
 	assert(sair([climb])), %Quando sentir a 1 brisa vai dar climb, servindo para quando sentir brisa na casa (1,1) nao arriscar e sair logo
 	assert(atira([shoot,goforward,goforward,goforward])), %Quando sentir o Fedor sem ser na quinas do mapa vai atirar e andar ate sair do Fedor
 	assert(viradas(0)), %Conta o numero de vezes o Agente virou para sair quando bater a 4 vez ou para dar Backtracking
 	assert(gold(0)), %Saber se ja pegou o ouro para comecar o Backtracking
 	assert(pegar([grab,turnleft,turnleft])), %Quando pegar o ouro dar uma volta de 180 graus
-	assert(viraatira([turnleft,shoot,goforward,goforward,goforward])), %Quando estiver na quina do mapa e sentir uma brisa ele vira antes de atirar
 	assert(casa(0)). %Contar em que casa esta para saber se esta na quina ou nao
 
 restart_agent :-
